@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_recipes_app/components/category.item.dart';
+import 'package:my_recipes_app/components/category_item.dart';
 import 'package:my_recipes_app/data/dummy_data.dart';
 
-class CategorysScreen extends StatelessWidget {
-  const CategorysScreen({Key? key}) : super(key: key);
+class CategoriesScreen extends StatelessWidget {
+  const CategoriesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

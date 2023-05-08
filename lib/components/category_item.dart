@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_recipes_app/components/my_app.dart';
 import 'package:my_recipes_app/routes/app_routes.dart';
 
 import '../models/category.dart';
