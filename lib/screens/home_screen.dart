@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:my_recipes_app/components/main_drawer.dart';
-import 'package:my_recipes_app/routes/app_routes.dart';
+import 'package:my_recipes_app/models/meal.dart';
 import 'package:my_recipes_app/screens/categories_screen.dart';
 import 'package:my_recipes_app/screens/favorities_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  final List<Meal> meals;
+  
+
+  const HomeScreen(this.meals, {Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -14,10 +17,16 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedScreenIndex = 0;
 
-  final List<Map<String, dynamic>> _screens = [
-    {'title': 'Lista de Categorias', 'screen': const CategoriesScreen()},
-    {'title': 'Meus Favoritos', 'screen': const FavoritiesScreen()},
-  ];
+  List<Map<String, dynamic>> _screens = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _screens = [
+      {'title': 'Lista de Categorias', 'screen': const CategoriesScreen()},
+      {'title': 'Meus Favoritos', 'screen': FavoritiesScreen(widget.meals)},
+    ];
+  }
 
   void onTap(int index) {
     setState(() {

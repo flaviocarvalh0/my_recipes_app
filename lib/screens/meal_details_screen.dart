@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:my_recipes_app/models/meal.dart';
 
 class MealDetailsScreen extends StatelessWidget {
-  const MealDetailsScreen({Key? key}) : super(key: key);
+  final Function(Meal) onToggleFavorite;
+  final Function(Meal) isFavotire;
+
+  const MealDetailsScreen(this.onToggleFavorite, this.isFavotire, {Key? key})
+      : super(key: key);
 
   Widget _createSectionTitle(BuildContext context, String title) {
     return Padding(
@@ -98,6 +102,13 @@ class MealDetailsScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          onToggleFavorite(meal);
+        },
+        child:
+            Icon(isFavotire(meal) ? Icons.star : Icons.star_outline_outlined),
       ),
     );
   }
